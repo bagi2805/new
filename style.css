@@ -1,0 +1,30 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f9fb;
+    text-align: center;
+    padding: 50px;
+}
+select,button{
+    padding:10px;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+.weather-box{
+    margin-top: 30px;
+    display:inline-block;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.icon{
+    width:80px;
+    margin:10px 0;
+}
+.temp{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.desc{
+    color:#444;
+}
