@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App-Home</title>
+    <link rel="stylesheet"href="style.css">
+</head>
+<body>
+    <h1>Weather App</h1>
+    <p>Select a city to view its weather:</p>
+    <select id="citySelect">
+        <option value="">-- choose city --</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Kolkata">Kolkata</option>
+    </select>
+    <br /><br />
+    <button onclick="goToWeather()">View Weather</button>
+    <script>
+        function goToWeather(){
+            const city=document.getElementById("citySelect").value;
+            if(city){
+                localStorage.setItem("selectedCity",city);
+                window.location.href="weather.html";
+            }
+            else{
+                alert("Please select a city");
+            }
+        }
+    </script>
+</body>
+</html>
+----------------------------------------------------------------------
+weather.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App-Main</title>
+    <link rel="stylesheet"href="style.css">
+</head>
+<body>
+    <a href="index.html">⬅️Back</a>
+    <h1>city Weather</h1>
+
+    <div id="weatherBox" class="weather-box" style="display:none;">
+    <h2 id="cityName"></h2>
+    <img id="icon" class="icon" src="" alt="Icon"/>
+    <p id="temp" class="temp"></p>
+    <p id="desc" class="desc"></p>
+    </div>
+
+    <script src="Data.js"></script>
+    <script>
+        const city=localStorage.getItem("selectedCity");
+        const weather=WeatherData[city];
+
+        if(weather){
+            document.getElementById("cityName").innerText=city;
+            document.getElementById("icon").src=weather.icon;
+            document.getElementById("temp").innerText=`${weather.temp}°c`;
+            document.getElementById("desc").innerText=weather.description;
+            document.getElementById("weatherBox").style.display="block";
+        }
+        else{
+            document.body.innerHTML="<h3>No data found.Please go back and select a city.</h3>";
+        }
+    </script>
+    </body>
+</body>
+</html>
